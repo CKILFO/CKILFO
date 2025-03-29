@@ -92,3 +92,7 @@ Il s’intègre dans un écosystème complet autour du token **CKF** et prépare
 ---
 
 ## ⭐️ Laisse un star si tu aimes le projet !
+
+📬 Pour une licence commerciale, contactez-moi :
+
+[![Email](https://img.shields.io/badge/💼%20Licence%20pro-Contacter%20CKILFO-blue)](mailto:ckilmefo@gmail.com)
