@@ -1,3 +1,5 @@
+![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)
+
 # 📊 CKILFO Premium Dashboard (ckf-dashboard)
 
 Bienvenue dans le tableau de bord premium CKILFO 🚀
