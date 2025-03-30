@@ -12,7 +12,7 @@
 <body>
   <header>
     <h1>💎 CKILFO Token (CKF)</h1>
-    <p>Affichage live depuis la BSC Testnet</p>
+    <p>Affichage live + paiement testnet</p>
   </header>
 
   <main>
@@ -28,6 +28,12 @@
     <div class="wallet-info" id="walletSection" style="display:none">
       <p><strong>Adresse Wallet :</strong> <span id="walletAddress"></span></p>
       <p><strong>Solde CKF :</strong> <span id="walletBalance"></span></p>
+
+      <h3>🔁 Envoyer des CKF</h3>
+      <input type="text" id="toAddress" placeholder="Adresse destinataire" />
+      <input type="number" id="amount" placeholder="Montant (CKF)" />
+      <button id="sendBtn">🚀 Envoyer</button>
+      <p id="txStatus"></p>
     </div>
   </main>
 
