@@ -21,7 +21,7 @@ button {
   cursor: pointer;
 }
 
-.token-info {
+.token-info, .wallet-info {
   margin-top: 2rem;
   background: #fff;
   border-radius: 10px;
