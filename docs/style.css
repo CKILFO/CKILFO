@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.6;
+}
+h1 {
+  color: #2c3e50;
+  text-align: center;
+}
+button {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #2980b9;
+}
+p {
+  font-size: 18px;
+  margin-top: 1rem;
+  text-align: center;
+}
+#walletAddress, #ckfBalance {
+  font-weight: bold;
+  color: #27ae60;
+}

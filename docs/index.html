@@ -1,44 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>CKILFO Token – Démo Testnet Live</title>
-  <meta name="description" content="Démonstration en direct du token CKF sur la BSC Testnet.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>CKILFO Dashboard</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <h1>💎 CKILFO Token (CKF)</h1>
-    <p>Affichage live + paiement testnet</p>
-  </header>
-
-  <main>
-    <button id="connectBtn">🔗 Connecter Metamask</button>
-
-    <div class="token-info">
-      <p><strong>Adresse :</strong> <span id="tokenAddress"></span></p>
-      <p><strong>Nom :</strong> <span id="name"></span></p>
-      <p><strong>Symbole :</strong> <span id="symbol"></span></p>
-      <p><strong>Total Supply :</strong> <span id="supply"></span></p>
-    </div>
-
-    <div class="wallet-info" id="walletSection" style="display:none">
-      <p><strong>Adresse Wallet :</strong> <span id="walletAddress"></span></p>
-      <p><strong>Solde CKF :</strong> <span id="walletBalance"></span></p>
-
-      <h3>🔁 Envoyer des CKF</h3>
-      <input type="text" id="toAddress" placeholder="Adresse destinataire" />
-      <input type="number" id="amount" placeholder="Montant (CKF)" />
-      <button id="sendBtn">🚀 Envoyer</button>
-      <p id="txStatus"></p>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 CKILFO | Version testnet</p>
-  </footer>
+  <h1>Dashboard CKILFO 🚀</h1>
+  <div style="text-align: center;">
+    <button id="connectBtn">🔗 Connecter MetaMask</button>
+    <p>Adresse connectée : <span id="walletAddress">non connectée</span></p>
+    <p>💰 Balance CKF : <span id="ckfBalance">--</span></p>
+    <button id="sendBtn">📤 Envoyer 1 CKF</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

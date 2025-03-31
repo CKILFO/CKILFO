@@ -1,65 +1,82 @@
-const tokenAddress = "0x43988e9f76AB3Ce8eB09cF1F72e567CFF93AdA46";
-const abi = [
-  "function name() view returns (string)",
-  "function symbol() view returns (string)",
-  "function totalSupply() view returns (uint256)",
-  "function balanceOf(address) view returns (uint256)",
-  "function transfer(address to, uint amount) returns (bool)"
-];
+async function checkNetwork() {
+  const chainId = await ethereum.request({ method: 'eth_chainId' });
+  if (chainId !== '0x61' && chainId !== 97) {
+    alert("🛑 Change de réseau : sélectionne BSC Testnet dans MetaMask.");
+  } else {
+    console.log("✅ Réseau OK : BSC Testnet");
+  }
+}
 
-document.getElementById("tokenAddress").textContent = tokenAddress;
+async function getCKFBalance(address) {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const contractAddress = '0x43988e9f76AB3Ce8eB09cF1F72e567CFF93AdA46';
+  const abi = [
+    "function balanceOf(address owner) view returns (uint256)",
+    "function decimals() view returns (uint8)"
+  ];
 
-document.getElementById("connectBtn").addEventListener("click", async () => {
-  if (typeof window.ethereum === "undefined") {
-    alert("Metamask non détecté !");
+  const ckfContract = new ethers.Contract(contractAddress, abi, provider);
+  try {
+    const [rawBalance, decimals] = await Promise.all([
+      ckfContract.balanceOf(address),
+      ckfContract.decimals()
+    ]);
+    const formatted = ethers.utils.formatUnits(rawBalance, decimals);
+    document.getElementById("ckfBalance").innerText = `${formatted} CKF`;
+  } catch (error) {
+    console.error("Erreur lecture balance CKF :", error);
+    document.getElementById("ckfBalance").innerText = "Erreur";
+  }
+}
+
+async function transferCKF() {
+  const recipient = "0x782bb7d8c3b4e69030c959ed095cfba225ea7438";
+  const contractAddress = "0x43988e9f76AB3Ce8eB09cF1F72e567CFF93AdA46";
+  const abi = [
+    "function transfer(address to, uint256 amount) returns (bool)",
+    "function decimals() view returns (uint8)"
+  ];
+
+  if (!window.ethereum) {
+    alert("🦊 Installe MetaMask !");
     return;
   }
 
-  const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-  const userAddress = accounts[0];
-
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
-  const contract = new ethers.Contract(tokenAddress, abi, signer);
+  const contract = new ethers.Contract(contractAddress, abi, signer);
 
   try {
-    const [name, symbol, supply, balance] = await Promise.all([
-      contract.name(),
-      contract.symbol(),
-      contract.totalSupply(),
-      contract.balanceOf(userAddress)
-    ]);
+    const decimals = await contract.decimals();
+    const amount = ethers.utils.parseUnits("1", decimals);
 
-    document.getElementById("name").textContent = name;
-    document.getElementById("symbol").textContent = symbol;
-    document.getElementById("supply").textContent = ethers.utils.formatUnits(supply, 18);
+    const tx = await contract.transfer(recipient, amount);
+    await tx.wait();
 
-    document.getElementById("walletAddress").textContent = userAddress;
-    document.getElementById("walletBalance").textContent = ethers.utils.formatUnits(balance, 18);
-    document.getElementById("walletSection").style.display = "block";
+    alert("✅ 1 CKF envoyé avec succès !");
+    const address = await signer.getAddress();
+    getCKFBalance(address);
+  } catch (error) {
+    console.error("Erreur de transfert :", error);
+    alert("❌ Erreur lors du transfert.");
+  }
+}
 
-    document.getElementById("sendBtn").onclick = async () => {
-      const to = document.getElementById("toAddress").value;
-      const amount = document.getElementById("amount").value;
-
-      if (!to || !amount) {
-        alert("Veuillez remplir tous les champs.");
-        return;
-      }
-
-      try {
-        const tx = await contract.transfer(to, ethers.utils.parseUnits(amount, 18));
-        document.getElementById("txStatus").textContent = "Transaction envoyée... Attente de validation...";
-        await tx.wait();
-        document.getElementById("txStatus").textContent = "✅ Transaction validée !";
-      } catch (error) {
-        console.error(error);
-        document.getElementById("txStatus").textContent = "❌ Erreur lors de l'envoi.";
-      }
-    };
-
-  } catch (e) {
-    alert("Erreur de lecture du contrat !");
-    console.error(e);
+document.getElementById("connectBtn").addEventListener("click", async () => {
+  if (typeof window.ethereum !== 'undefined') {
+    try {
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+      const address = accounts[0];
+      console.log("✅ Connecté :", address);
+      document.getElementById("walletAddress").innerText = address;
+      await checkNetwork();
+      await getCKFBalance(address);
+    } catch (error) {
+      console.error("❌ Connexion refusée :", error);
+    }
+  } else {
+    alert("🦊 Installe MetaMask !");
   }
 });
+
+document.getElementById("sendBtn").addEventListener("click", transferCKF);
