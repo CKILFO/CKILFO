@@ -8,14 +8,7 @@
   <strong>CKILFO – Token utilitaire pour dashboards Web3 premium</strong>
 </p>
 
-<p align="center">
-  <a href="https://github.com/CKILFO/ckf-dashboard">
-    <img src="https://img.shields.io/badge/Dashboard-Live-green" alt="Live Dashboard"/>
-  </a>
-  <img src="https://img.shields.io/badge/Smart%20Contract-Verified-blue" alt="Smart Contract Verified"/>
-  <img src="https://img.shields.io/badge/Licence-Perso%20libre%20%7C%20Pro%20payante-orange" alt="Licence"/>
-</p>
-# 📊 CKILFO Premium Dashboard – React + Web3 + Token CKF
+📊 CKILFO Premium Dashboard – React + Web3 + Token CKF
 
 Bienvenue dans le **dashboard premium CKILFO**, un tableau de bord Web3 connecté à un **smart contract CKF sur BSC Testnet**, permettant l’accès à des fonctionnalités premium via un **paiement on-chain en token CKF**.
 
