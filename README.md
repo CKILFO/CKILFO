@@ -3,6 +3,10 @@
 ![Licence double](https://img.shields.io/badge/Licence-Perso%20libre%20%7C%20Pro%20payante-orange)
 [![CC BY-NC 4.0](https://img.shields.io/badge/Licence-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/CKILFO/CKILFO/main/Logo%20CKF%201.png" alt="Logo CKILFO" width="200"/>
+</p>
+
 # 📊 CKILFO Premium Dashboard – React + Web3 + Token CKF
 
 Bienvenue dans le **dashboard premium CKILFO**, un tableau de bord Web3 connecté à un **smart contract CKF sur BSC Testnet**, permettant l’accès à des fonctionnalités premium via un **paiement on-chain en token CKF**.
