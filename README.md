@@ -4,7 +4,7 @@
 [![CC BY-NC 4.0](https://img.shields.io/badge/Licence-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CKILFO/CKILFO/main/Logo%20CKF%201.png" alt="Logo CKILFO" width="200"/>
+  <img src="https://raw.githubusercontent.com/CKILFO/CKILFO/main/Logo%20CKF%20Last.png" alt="Logo CKILFO" width="200"/>
 </p>
 
 # 📊 CKILFO Premium Dashboard – React + Web3 + Token CKF
