@@ -1,8 +1,9 @@
+<p align="center">
 ![GitHub Pages](https://img.shields.io/badge/Dashboard-Live-green)
 ![Smart Contract Verified](https://img.shields.io/badge/Smart%20Contract-Verified-blue)
 ![Licence double](https://img.shields.io/badge/Licence-Perso%20libre%20%7C%20Pro%20payante-orange)
 [![CC BY-NC 4.0](https://img.shields.io/badge/Licence-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
-<p align="center">
+
   <img src="https://raw.githubusercontent.com/CKILFO/CKILFO/main/Logo%20CKF%20Last.png" alt="Logo CKILFO" width="200"/>
   <br/>
   <strong>CKILFO – Token utilitaire pour dashboards Web3 premium</strong>
