@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CKILFO Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+</head>
+<body>
+  <h1>Bienvenue sur le dashboard CKILFO</h1>
+  <button onclick="connectWallet()">Se connecter</button>
+  <p id="walletAddress"></p>
+  <p id="ckfBalance"></p>
+
+  <div id="premiumSection" style="display: none; border: 2px solid green; padding: 10px;">
+    <h2>Zone Premium</h2>
+    <p>Bienvenue dans les outils premium de CKILFO 🛠️</p>
+  </div>
+
+  <div id="notEligible" style="display: none; color: red;">
+    <p>❌ Vous devez posséder au moins 1000 CKF pour accéder à cette zone.</p>
+  </div>
+
+  <script>
+    const tokenAddress = "0x782bb7d8c3b4e69030c959ed095cfba225ea7438"; // Remplace par l'adresse réelle du token CKF sur le testnet
+    const tokenABI = [
+      "function balanceOf(address owner) view returns (uint256)"
+    ];
+
+    let provider;
+    let signer;
+
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        signer = provider.getSigner();
+        const address = await signer.getAddress();
+
+        document.getElementById('walletAddress').innerText = `Wallet connecté : ${address}`;
+        getCKFBalance(address);
+      } else {
+        alert("Installez Metamask pour utiliser ce dashboard");
+      }
+    }
+
+    async function getCKFBalance(address) {
+      const contract = new ethers.Contract(tokenAddress, tokenABI, provider);
+      const balance = await contract.balanceOf(address);
+
+      const ckfBalance = Number(ethers.utils.formatUnits(balance, 18));
+      document.getElementById('ckfBalance').innerText = `Solde CKF : ${ckfBalance}`;
+
+      if (ckfBalance >= 1000) {
+        document.getElementById('premiumSection').style.display = 'block';
+      } else {
+        document.getElementById('notEligible').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
